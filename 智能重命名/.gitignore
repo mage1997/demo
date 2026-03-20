@@ -1,4 +1,5 @@
 node_modules/
-release/
+# 安装包/便携版可提交；解包目录体积大且与 .exe 重复，默认仍忽略
+release/win-unpacked/
 *.log
 .DS_Store
