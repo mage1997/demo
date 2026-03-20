@@ -37,7 +37,7 @@ npm run dist
 
 `package.json` 中已设置 `win.signAndEditExecutable: false`，避免部分网络环境下额外下载 `winCodeSign` 失败。
 
-> `release/` 与 `node_modules/` 已加入 `.gitignore`，安装包一般不提交到 Git，由本机构建或 CI 产出。
+> `release/` 中的**便携版 / 安装包 / blockmap** 已纳入版本库，便于在 GitHub 网页直接浏览下载；`release/win-unpacked/` 仍被忽略（体积大且与 `.exe` 重复）。`node_modules/` 始终在 `.gitignore` 中。单文件约 70MB+，GitHub 会提示「超过 50MB 建议」；若后续频繁更新安装包，可考虑改用 [Git LFS](https://git-lfs.github.com)。
 
 ## 限制说明
 
