@@ -24,9 +24,20 @@ npm start
 npm run dist
 ```
 
-产物在 `release/`（便携版 `portable` 与 NSIS 安装包，视 `package.json` 中 `build.win.target` 配置而定）。
+产物在 `release/`：
 
-> 首次打包会下载 Electron 二进制，耗时取决于网络。
+- **便携版**：`智能重命名 1.0.0.exe`（可直接运行）
+- **安装包**：`智能重命名 Setup 1.0.0.exe`（NSIS）
+
+> 首次打包会下载 Electron / NSIS 等依赖，耗时取决于网络。若本机访问 GitHub 不稳定导致失败，可在仓库 **Actions** 中运行工作流 **Build Windows release**，从 **Artifacts** 下载已构建的安装包。
+
+### CI 构建
+
+推送至 `main` 或 `rename_demo`（且变更在 `智能重命名/` 下）会触发 [`.github/workflows/build-windows.yml`](../.github/workflows/build-windows.yml)。在 GitHub 仓库页 **Actions** → 对应运行记录 → **Artifacts** 下载 `smart-rename-windows-x64`。
+
+`package.json` 中已设置 `win.signAndEditExecutable: false`，避免部分网络环境下额外下载 `winCodeSign` 失败。
+
+> `release/` 与 `node_modules/` 已加入 `.gitignore`，安装包一般不提交到 Git，由本机构建或 CI 产出。
 
 ## 限制说明
 
